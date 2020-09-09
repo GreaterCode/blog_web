@@ -27,6 +27,9 @@ func InitRouter() *gin.Engine {
 
 		//首页
 		router.GET("/", controllers.HomeGet)
+
+		//退出
+		router.GET("/exit", controllers.ExitGet)
 	}
 
 	return router
