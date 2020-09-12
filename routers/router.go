@@ -32,5 +32,10 @@ func InitRouter() *gin.Engine {
 		router.GET("/exit", controllers.ExitGet)
 	}
 
+	v1 := router.Group("/article")
+	{
+		v1.GET("add", controllers.AddArticleGet)
+		v1.POST("add", controllers.AddArticlePOST)
+	}
 	return router
 }
