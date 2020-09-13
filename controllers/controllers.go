@@ -17,6 +17,7 @@ func RegisterGET(c *gin.Context) {
 
 // 处理注册
 func RegisterPost(c *gin.Context) {
+	fmt.Println("==================")
 	username := c.PostForm("username")
 	password := c.PostForm("password")
 	repassword := c.PostForm("repassword")

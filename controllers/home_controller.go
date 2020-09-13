@@ -32,11 +32,11 @@ func HomeGet(c *gin.Context) {
 		artList, _ = models.FindArticleWithPage(page)
 	}
 	hasFooter = true
-	fmt.Println("page---1->", page)
-	fmt.Printf("%d", len(artList))
-	for _, x := range artList {
-		fmt.Println(" v:%v", x)
-	}
+	//fmt.Println("page---1->", page)
+	//fmt.Printf("%d", len(artList))
+	//for _, x := range artList {
+	//	fmt.Println(" v:%v", x)
+	//}
 	homeFooterPageCode := models.ConfigHomeFooterPageCode(page)
 
 	html := models.MakeHomeBlocks(artList, islogin)

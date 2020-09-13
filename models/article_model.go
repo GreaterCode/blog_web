@@ -39,7 +39,6 @@ func insertArticle(article Article) (int64, error) {
 // 按页查询文章
 func FindArticleWithPage(page int) ([]Article, error) {
 	//page--
-	fmt.Println("---------->page", page)
 	var artList []Article
 	artList, err := QueryArticleWithPage(page, config.NUM)
 	if err != nil {
@@ -58,8 +57,6 @@ func QueryArticleWithPage(page, num int) ([]Article, error) {
 		panic(err)
 	}
 	return artList, err
-	//fmt.Println("sql--",sql)
-	//return QueryArticlesWithCon(sql)
 }
 
 // 根据条件查询文章

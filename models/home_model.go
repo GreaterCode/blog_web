@@ -106,9 +106,9 @@ func ConfigHomeFooterPageCode(page int) HomeFoolterPageCode {
 	} else {
 		pageCode.HasNext = true
 	}
-	fmt.Println("page-->%v", pageCode.HasPre)
-	fmt.Println("page-->%v", pageCode.HasNext)
-	fmt.Println("page-->%d, sum_page-->%d", page, allPageNum)
+	//fmt.Println("page-->%v", pageCode.HasPre)
+	//fmt.Println("page-->%v", pageCode.HasNext)
+	//fmt.Println("page-->%d, sum_page-->%d", page, allPageNum)
 
 	pageCode.PreLink = "/?page=" + strconv.Itoa(page-1)
 	pageCode.NextLink = "/？page=" + strconv.Itoa(page+1)
