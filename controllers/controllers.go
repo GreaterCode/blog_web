@@ -71,11 +71,6 @@ func LoginPost(c *gin.Context) {
 	}
 }
 
-func HomeGet(c *gin.Context) {
-	islogin := GetSession(c)
-	c.HTML(http.StatusOK, "home.html", gin.H{"IsLogin": islogin})
-}
-
 func GetSession(c *gin.Context) bool {
 	session := sessions.Default(c)
 	loginuser := session.Get("loginuser")

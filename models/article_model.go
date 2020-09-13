@@ -38,21 +38,34 @@ func insertArticle(article Article) (int64, error) {
 
 // 按页查询文章
 func FindArticleWithPage(page int) ([]Article, error) {
-	page--
+	//page--
 	fmt.Println("---------->page", page)
-
-	return QueryArticleWithPage(page, config.NUM)
+	var artList []Article
+	artList, err := QueryArticleWithPage(page, config.NUM)
+	if err != nil {
+	}
+	//return QueryArticleWithPage(page, config.NUM)
+	return artList, err
 
 }
 
+// 分页查询数据库
 func QueryArticleWithPage(page, num int) ([]Article, error) {
-	sql := fmt.Sprintf("limit %d, %d", page*num, num)
-	return QueryArticlesWithCon(sql)
+	sql := fmt.Sprintf("limit %d, %d", (page-1)*num, num)
+	var artList []Article
+	artList, err := QueryArticlesWithCon(sql)
+	if err != nil {
+		panic(err)
+	}
+	return artList, err
+	//fmt.Println("sql--",sql)
+	//return QueryArticlesWithCon(sql)
 }
 
 // 根据条件查询文章
 func QueryArticlesWithCon(sql1 string) ([]Article, error) {
-	sql := "select id, title, tags, short, content, author, createtime from article" + sql1
+	sql := "select id, title, tags, short, content, author, createtime from article " + sql1
+	fmt.Println(sql)
 	rows, err := database.QueryDB(sql)
 	if err != nil {
 		return nil, err
