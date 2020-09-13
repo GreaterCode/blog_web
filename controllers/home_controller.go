@@ -17,21 +17,21 @@ func HomeGet(c *gin.Context) {
 	page, _ := strconv.Atoi(c.Query("page"))
 
 	var (
-		artList    []models.Article
-		hasFoolter bool
+		artList   []models.Article
+		hasFooter bool
 	)
+	fmt.Println("tag-->%s", tag)
+	fmt.Println("tag num -->%d", len(tag))
 
 	if len(tag) > 0 {
 		artList, _ = models.QueryArticlesWithTag(tag)
-		hasFoolter = false
 	} else {
 		if page <= 0 {
 			page = 1
 		}
 		artList, _ = models.FindArticleWithPage(page)
-		hasFoolter = true
 	}
-
+	hasFooter = true
 	fmt.Println("page---1->", page)
 	fmt.Printf("%d", len(artList))
 	for _, x := range artList {
@@ -40,5 +40,5 @@ func HomeGet(c *gin.Context) {
 	homeFooterPageCode := models.ConfigHomeFooterPageCode(page)
 
 	html := models.MakeHomeBlocks(artList, islogin)
-	c.HTML(http.StatusOK, "home.html", gin.H{"IsLogin": islogin, "Content": html, "hasFooter": hasFoolter, "PageCode": homeFooterPageCode})
+	c.HTML(http.StatusOK, "home.html", gin.H{"IsLogin": islogin, "Content": html, "HasFooter": hasFooter, "PageCode": homeFooterPageCode})
 }

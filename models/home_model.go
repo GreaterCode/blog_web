@@ -50,11 +50,9 @@ func MakeHomeBlocks(articles []Article, isLogin bool) template.HTML {
 	for _, art := range articles {
 		//将数据库model转换为首页模板所需要的model
 		homeParam := HomeBlockParam{}
-		fmt.Println(art.Title)
 		homeParam.Id = art.Id
 		homeParam.Title = art.Title
 		homeParam.Tags = createTagsLink(art.Tags)
-		fmt.Println("tag---->" + art.Tags)
 		homeParam.Short = art.Short
 		homeParam.content = art.Content
 		homeParam.Author = art.Author
@@ -108,6 +106,9 @@ func ConfigHomeFooterPageCode(page int) HomeFoolterPageCode {
 	} else {
 		pageCode.HasNext = true
 	}
+	fmt.Println("page-->%v", pageCode.HasPre)
+	fmt.Println("page-->%v", pageCode.HasNext)
+	fmt.Println("page-->%d, sum_page-->%d", page, allPageNum)
 
 	pageCode.PreLink = "/?page=" + strconv.Itoa(page-1)
 	pageCode.NextLink = "/？page=" + strconv.Itoa(page+1)
