@@ -66,7 +66,7 @@ func LoginPost(c *gin.Context) {
 		session := sessions.Default(c)
 		session.Set("loginuser", username)
 		session.Save()
-		c.JSON(http.StatusOK, gin.H{"code": 0, "message": "登录成功"})
+		c.JSON(http.StatusOK, gin.H{"code": 1, "message": "登录成功"})
 	} else {
 		c.JSON(http.StatusOK, gin.H{"code": 0, "message": "登录失败"})
 	}

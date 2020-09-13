@@ -25,8 +25,10 @@ func QueryUserWithCon(con string) int {
 	sql := fmt.Sprintf("select id from users %s", con)
 	fmt.Println(sql)
 	row := database.QueryRowDB(sql)
+
 	id := 0
 	row.Scan(&id)
+
 	return id
 }
 
@@ -38,6 +40,6 @@ func QueryUserWithUsername(username string) int {
 
 //根据用户名和密码查询
 func QueryUserWithParam(username, password string) int {
-	sql := fmt.Sprintf("where username=%s and password=%s", username, password)
+	sql := fmt.Sprintf("where username=\"%s\" and password=\"%s\"", username, password)
 	return QueryUserWithCon(sql)
 }
