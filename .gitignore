@@ -13,3 +13,13 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+.DS_Store
+.idea/workspace.xml
+database/.DS_Store
+go.mod
+static/.DS_Store
+static/upload/.DS_Store
+static/upload/img/.DS_Store
+static/upload/img/2018/.DS_Store
+static/upload/img/2018/12/.DS_Store
+*.idea
