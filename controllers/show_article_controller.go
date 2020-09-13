@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"blog_web/models"
+	"blog_web/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -15,5 +16,7 @@ func ShowArticleGet(c *gin.Context) {
 	id, _ := strconv.Atoi(idStr)
 
 	art := models.QueryArticleWithId(id)
-	c.HTML(http.StatusOK, "show_article.html", gin.H{"IsLogin": islogin, "Title": art.Title, "Content": art.Content})
+	// c.HTML(http.StatusOK, "show_article.html", gin.H{"IsLogin": islogin, "Title": art.Title, "Content": art.Content})
+	c.HTML(http.StatusOK, "show_article.html", gin.H{"IsLogin": islogin, "Title": art.Title, "Content": utils.SwitchMarkdownToHtml(art.Content)})
+
 }
