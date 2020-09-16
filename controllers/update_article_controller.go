@@ -13,7 +13,6 @@ func UpdateArticleGet(c *gin.Context) {
 	islogin := GetSession(c)
 	idStr := c.Query("id")
 	id, _ := strconv.Atoi(idStr)
-	fmt.Println("id----> %d", id)
 
 	// 获取id 对应文章
 	art := models.QueryArticleWithId(id)
@@ -23,11 +22,17 @@ func UpdateArticleGet(c *gin.Context) {
 
 // 修改文章
 func UpdateArticlePost(c *gin.Context) {
+
+	fmt.Println("1111111111")
 	idStr := c.Query("id")
+	fmt.Println("id-----> %s", idStr)
+
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("id----->")
+
 	// 获取浏览器传输的数据
 	title := c.PostForm("title")
 	tags := c.PostForm("tags")

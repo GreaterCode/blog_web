@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"log"
 )
 
 var db *sql.DB
@@ -24,12 +23,10 @@ func InitMysql() {
 func ModifyDB(sql string, args ...interface{}) (int64, error) {
 	result, err := db.Exec(sql, args...)
 	if err != nil {
-		log.Println(err)
 		return 0, err
 	}
 	count, err := result.RowsAffected()
 	if err != nil {
-		log.Println(err)
 		return 0, err
 	}
 	return count, nil
