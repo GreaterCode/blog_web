@@ -58,6 +58,9 @@ func InitRouter() *gin.Engine {
 
 		//文件上传
 		router.POST("/upload", controllers.UploadPost)
+
+		//关于我
+		router.GET("/aboutme", controllers.AboutMeGet)
 	}
 
 	return router
